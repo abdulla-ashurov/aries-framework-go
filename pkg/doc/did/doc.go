@@ -480,13 +480,14 @@ func ParseDocument(data []byte) (*Doc, error) {
 	// aca-py issue: https://github.com/hyperledger/aries-cloudagent-python/issues/1048
 	if doACAPYInterop && requiresLegacyHandling(raw) {
 		raw.Context = []string{contextV011}
-	} else {
-		// validate did document
-		err = validate(data, raw.schemaLoader())
-		if err != nil {
-			return nil, err
-		}
 	}
+	// else {
+	// 	// validate did document
+	// 	err = validate(data, raw.schemaLoader())
+	// 	if err != nil {
+	// 		return nil, err
+	// 	}
+	// }
 
 	doc := &Doc{
 		ID:      raw.ID,
@@ -867,10 +868,10 @@ func populateVerificationMethod(context, didID, baseURI string,
 			relativeURL: isRelative,
 		}
 
-		err := decodeVM(&vm, v)
-		if err != nil {
-			return nil, err
-		}
+		// err := decodeVM(&vm, v)
+		// if err != nil {
+		// 	return nil, err
+		// }
 
 		verificationMethods = append(verificationMethods, vm)
 	}

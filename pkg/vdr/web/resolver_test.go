@@ -144,6 +144,16 @@ func TestResolveDID(t *testing.T) {
 	})
 }
 
+func TestYYY(t *testing.T) {
+	t.Run("test resolve did with path success", func(t *testing.T) {
+		did := "did:cheqd:testnet:MTMxDQKMTMxDQKMT"
+		v := New()
+		docResolution, err := v.Read(did)
+		require.Nil(t, err)
+		require.NotNil(t, docResolution)
+	})
+}
+
 func TestResolveDomain(t *testing.T) {
 	aliceDoc, err := ioutil.ReadFile("testdata/alice/did.json")
 	require.NoError(t, err)
